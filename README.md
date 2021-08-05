@@ -1,5 +1,5 @@
-# automation
-automate all the boring things
+# Automation
+Automate all the boring things
 
 #Install O365 with exclusions
 
