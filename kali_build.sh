@@ -21,3 +21,11 @@ O='#PasswordAuthentication yes'
 I='PasswordAuthentication yes'
 egrep -q $TREX $SSHD && sed -i "s/$O/$I/g"  $SSHD 
 
+echo "[*] Restarting sshd service..."
+systemctl restart sshd
+netstat -tnlup | egrep "tcp\s.+?22\s.+?LISTEN\s" 
+M="[+] SSH Daemon"
+netstat -tnlup | egrep "tcp\s.+?22\s.+?LISTEN\s" 2>&1 > /dev/null && echo "$M running" || echo "$M failed to restart"
+
+
+
