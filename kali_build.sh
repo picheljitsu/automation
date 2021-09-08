@@ -3,6 +3,7 @@
 sudo apt-get update -y && sudo apt-get upgrade
 sudo apt install -y kali-root-login
 apt install -y snapd
+apt install python3-pip -y
 systemctl enable --now snapd apparmor
 
 #Set up SSH server login
@@ -27,5 +28,15 @@ netstat -tnlup | egrep "tcp\s.+?22\s.+?LISTEN\s"
 M="[+] SSH Daemon"
 netstat -tnlup | egrep "tcp\s.+?22\s.+?LISTEN\s" 2>&1 > /dev/null && echo "$M running" || echo "$M failed to restart"
 
+pip3 install twint 
 
+cd /tmp
 
+#https://code.visualstudio.com/docs/setup/linux
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
+apt install apt-transport-https
+sudo apt update
+sudo apt install code -y
