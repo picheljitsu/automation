@@ -41,3 +41,9 @@ rm -f packages.microsoft.gpg
 apt install apt-transport-https
 sudo apt update
 sudo apt install code -y
+
+#Set path for custom scripts
+echo "[*] Setting custom scripts..."
+echo 'PATH=$PATH:/usr/src/' >> ~/.profile
+source ~/.profile
+
