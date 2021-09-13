@@ -1,6 +1,7 @@
 #!/bin/bash
 APT_PACKAGES="jd-gui" "snapd" "python3-pip" 
-PY_PACKAGES=
+PY_PACKAGES=twint
+
 sudo apt-get update -y && sudo apt-get upgrade
 sudo apt install -y kali-root-login
 apt install -y snapd
