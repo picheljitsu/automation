@@ -1,0 +1,6 @@
+#!/bin/sh
+WD=`pwd`
+cd /opt/cobaltstrike
+nohup /opt/cobaltstrike/cobaltstrike &
+cd $WD
+echo "[+] Started Cobaltstrike client"
