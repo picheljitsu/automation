@@ -44,6 +44,9 @@ sudo apt install code -y
 
 #Set path for custom scripts
 echo "[*] Setting custom scripts..."
+cp SCRIPTS/* /usr/src/
+echo "[+] Copied scripts to /usr/src"
 echo 'PATH=$PATH:/usr/src/' >> ~/.profile
 source ~/.profile
+echo "[+] Added /usr/src to PATH env variable"
 
