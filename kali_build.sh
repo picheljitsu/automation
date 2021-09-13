@@ -1,5 +1,5 @@
 #!/bin/bash
-APT_PACKAGES="jd-gui" "snapd" "python3-pip" 
+
 PY_PACKAGES=twint
 cd /tmp
 sudo apt-get update -y >> install.log 2>&1 && sudo apt-get upgrade >> install.log 2>&1
@@ -16,6 +16,8 @@ sudo killall -u `whoami`
 if [ $1 ]; then
   passwd root $1
 fi 
+
+APT_PACKAGES="jd-gui" "snapd" "python3-pip" 
 echo "[*] Starting package install"
 for P in $APT_PACKAGES;
   do apt install $P -y >> $P_install.log
