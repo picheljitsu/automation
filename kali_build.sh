@@ -1,12 +1,26 @@
 #!/bin/bash
 APT_PACKAGES="jd-gui" "snapd" "python3-pip" 
 PY_PACKAGES=twint
+cd /tmp
+sudo apt-get update -y >> install.log 2>&1 && sudo apt-get upgrade >> install.log 2>&1
+sudo apt install -y kali-root-login >> install.log 2>&1
 
-sudo apt-get update -y && sudo apt-get upgrade
-sudo apt install -y kali-root-login
-apt install -y snapd
-apt install python3-pip -y
-systemctl enable --now snapd apparmor
+#fork task to login to desktop once user session killed?
+
+#logout of the session
+sudo killall -u `whoami`
+
+
+
+#Set root creds
+if [ $1 ]; then
+  passwd root $1
+fi 
+echo "[*] Starting package install"
+for P in $APT_PACKAGES;
+  do apt install $P -y >> $P_install.log
+  echo "[+] Installed package $P"
+done
 
 #Set up SSH server login
 SSHD=/etc/ssh/sshd_config
@@ -24,11 +38,17 @@ O='#PasswordAuthentication yes'
 I='PasswordAuthentication yes'
 egrep -q $TREX $SSHD && sed -i "s/$O/$I/g"  $SSHD 
 
-echo "[*] Restarting sshd service..."
+echo "[*] Restarting services..."
 systemctl restart sshd
+echo "[+] Restarted sshd"
+
+
 netstat -tnlup | egrep "tcp\s.+?22\s.+?LISTEN\s" 
 M="[+] SSH Daemon"
 netstat -tnlup | egrep "tcp\s.+?22\s.+?LISTEN\s" 2>&1 > /dev/null && echo "$M running" || echo "$M failed to restart"
+
+systemctl enable --now snapd apparmor
+echo "[+] Started snapd"
 
 pip3 install twint 
 
