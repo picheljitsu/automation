@@ -8,6 +8,7 @@ cscript .\OSPP.vbs /dstatus
 #Install O365 with exclusions
 
 Needs to be ran in PS
+
 Sample 1
 ```choco install microsoft-office-deployment --params='/64bit /Product:HomeStudent2019Retail /Exclude=Publisher,Outlook,Lync,Groove,Access'```
 
