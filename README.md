@@ -1,11 +1,17 @@
 # Automation
 Automate all the boring things
 
+#Finding an old office key
+cd 'C:\Program Files\Microsoft Office\Office16\'
+cscript .\OSPP.vbs /dstatus
+
 #Install O365 with exclusions
 
 Needs to be ran in PS
-
+Sample 1
 ```choco install microsoft-office-deployment --params='/64bit /Product:HomeStudent2019Retail /Exclude=Publisher,Outlook,Lync,Groove,Access'```
+Sample 2
+```choco install microsoft-office-deployment --params='/64bit /Product:Office19ProPlus2019R_Retail /Exclude=Publisher,Outlook,Lync,Groove,Access'```
 
 #Convert Windows 10 Enterprise Eval to Windows 10 Enterprise
 
