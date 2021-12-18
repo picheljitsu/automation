@@ -1,0 +1,10 @@
+#Fixing AppArmor issue with Snap profile
+#Received dmesg ERROR:
+# apparmor="DENIED" operation="change_onexec" info="label not found" error=-2 profile="unconfined" name="snap-update-ns.docker" pid=2250 comm="snap-confine"
+
+apparmor_parser -r /var/lib/snapd/apparmor/profiles/*
+ systemctl status  apparmor.service
+ systemctl status  snapd.apparmor.service
+ systemctl start  snapd.apparmor.service
+ snap start docker
+ 
