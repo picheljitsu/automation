@@ -4,7 +4,8 @@
 DEFAUL_PW='changepassword'
 while true; do
     CONFIRM_PW=''
-    read -p "[+] Enter new root password or hit enter to accept default password and continue (default: $ROOT_PW) " INPUT_PW
+    echo "[+] Enter new root password or hit enter to accept default password and continue (default: $ROOT_PW) " 
+    read INPUT_PW
     if [ ! -z $INPUT_PW ]
       read -p "[+] Accept new password $INPUT_PW? (Y/n)" CONFIRM_PW      
       case $CONFIRM_PW in
