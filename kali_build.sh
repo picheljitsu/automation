@@ -7,12 +7,12 @@ while true; do
     echo "[+] Enter new root password or hit enter to accept default password and continue (default: $ROOT_PW) " 
     read INPUT_PW
     if [ ! -z $INPUT_PW ]
-      read -p "[+] Accept new password $INPUT_PW? (Y/n)" CONFIRM_PW      
-      case $CONFIRM_PW in
-        [Yy]*|"" ) echo -e "$INPUT_PW\n$INPUT_PW\n$INPUT_PW" | sudo passwd root; break;;
-        [Nn]* ) break;;
-        * ) echo "Please answer yes or no.";;
-      esac
+        read -p "[+] Accept new password $INPUT_PW? (Y/n)" CONFIRM_PW
+        case $CONFIRM_PW in
+            [Yy]*|"" ) echo -e "$INPUT_PW\n$INPUT_PW\n$INPUT_PW" | sudo passwd root; break;;
+            [Nn]* ) break;;
+            * ) echo "Please answer yes or no.";;
+        esac
     fi
 done
 LAST_CWD=`pwd`
