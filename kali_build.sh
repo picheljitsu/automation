@@ -1,6 +1,24 @@
 #!/bin/bash
 #add pw spraying https://github.com/byt3bl33d3r/SprayingToolkit.git
 #add check for network/internet connectivity
+
+LAST_CWD=`pwd`
+LOG_FILE=/tmp/kali_setup_install.log
+APT_PACKAGES=(jd-gui snapd python3-pip)
+PY_PACKAGES=twint
+cd /tmp
+THIS_TTY=`/usr/bin/tty`
+echo "tty set to $THIS_TTY" >> $LOG_FILE
+
+printf "[+] Logging to $LOG_FILE"
+echo "[*] Updating and upgrading..."
+sudo apt-get update -y >> $LOG_FILE 2>&1 && sudo apt-get upgrade -y >> $LOG_FILE 2>&1
+echo "[+] Done w/ update and upgrade"
+
+echo "[*] Enabling root login..."
+sudo apt install -y kali-root-login >> install.log 2>&1
+echo "[+] root login enabled"
+
 ROOT_PW='changeme'
 
 while true; do
@@ -18,26 +36,8 @@ while true; do
             * ) echo "Please answer yes or no.";;
         esac        
 done
-LAST_CWD=`pwd`
-LOG_FILE=/tmp/kali_setup_install.log
-APT_PACKAGES=(jd-gui snapd python3-pip)
-PY_PACKAGES=twint
-cd /tmp
-THIS_TTY=`/usr/bin/tty`
-echo "tty set to $THIS_TTY" >> $LOG_FILE
 
-printf "[+] Logging to $LOG_FILE"
-echo "[*] Updating and upgrading..."
-sudo apt-get update -y >> $LOG_FILE 2>&1 && sudo apt-get upgrade -y >> $LOG_FILE 2>&1
-echo "[+] Done w/ update and upgrade"
-
-echo "[*] Enabling root login..."
-sudo apt install -y kali-root-login >> install.log 2>&1
-echo "[+] root login enabled"
 #fork task to login to desktop once user session killed?
-echo "[*] E"
-sudo passwd root
-
 #logout of the session
 sudo killall -u `whoami`
 
