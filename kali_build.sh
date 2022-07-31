@@ -6,7 +6,7 @@ LOG_FILE=/tmp/kali_setup_install.log
 APT_PACKAGES=(jd-gui snapd python3-pip)
 PY_PACKAGES=twint
 cd /tmp
-echo "[+] Logging to $LOG_FILE"
+printf "[+] Logging to $LOG_FILE"
 echo "[*] Updating and upgrading..."
 sudo apt-get update -y >> $LOG_FILE 2>&1 && sudo apt-get upgrade >> $LOG_FILE 2>&1
 echo "[+] Done w/ update and upgrade"
