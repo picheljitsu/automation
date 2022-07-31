@@ -1,20 +1,22 @@
 #!/bin/bash
 #add pw spraying https://github.com/byt3bl33d3r/SprayingToolkit.git
 #add check for network/internet connectivity
-DEFAUL_PW='changepassword'
+ROOT_PW='changeme'
+
 while true; do
     CONFIRM_PW=''
     echo "[+] Enter new root password or hit enter to accept default password and continue (default: $ROOT_PW) " 
     read INPUT_PW
-    if [ ! -z $INPUT_PW ]
-    then
-        read -p "[+] Accept new password $INPUT_PW? (Y/n)" CONFIRM_PW
+    if [[ ! -z $INPUT_PW ]]
+    then            
+        ROOT_PW=$INPUT_PW
+    fi        
+    read -p "[+] Accept new password '$ROOT_PW'? (Y/n) " CONFIRM_PW
         case $CONFIRM_PW in
-            [Yy]*|"" ) echo -e "$INPUT_PW\n$INPUT_PW\n$INPUT_PW" | sudo passwd root; break;;
-            [Nn]* ) break;;
+            [Yy]*|"" ) echo -e "$ROOT_PW\n$ROOT_PW\n$ROOT_PW" | sudo passwd root; break;;
+            [Nn]* ) ;;
             * ) echo "Please answer yes or no.";;
-        esac
-    fi
+        esac        
 done
 LAST_CWD=`pwd`
 LOG_FILE=/tmp/kali_setup_install.log
