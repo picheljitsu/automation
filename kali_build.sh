@@ -10,31 +10,31 @@ cd /tmp
 THIS_TTY=`/usr/bin/tty`
 echo "tty set to $THIS_TTY" >> $LOG_FILE
 
-printf "[+] Logging to $LOG_FILE"
-echo "[*] Updating and upgrading..."
+printf "[+] Logging to $LOG_FILE\n"
+printf "[*] Updating and upgrading...\n"
 sudo apt-get update -y >> $LOG_FILE 2>&1 && sudo apt-get upgrade -y >> $LOG_FILE 2>&1
-echo "[+] Done w/ update and upgrade"
+printf "[+] Done w/ update and upgrade\n"
 
-echo "[*] Enabling root login..."
+printf "[*] Enabling root login...\n"
 sudo apt install -y kali-root-login >> install.log 2>&1
-echo "[+] root login enabled"
+printf "[+] Enabled root login\n"
 
 ROOT_PW='changeme'
 
 while true; do
     CONFIRM_PW=''
-    echo "[+] Enter new root password or hit enter to accept default password and continue (default: $ROOT_PW) " 
+    printf "[+] Enter new root password or hit enter to accept default password and continue (default: $ROOT_PW) \n" 
     read -p INPUT_PW
     if [[ ! -z $INPUT_PW ]]
     then            
         ROOT_PW=$INPUT_PW
     fi   
-    echo "[+] Accept new password '$ROOT_PW'? (Y/n) " 
+    printf "[+] Accept new password '$ROOT_PW'? (Y/n) \n" 
     read -p CONFIRM_PW
         case $CONFIRM_PW in
             [Yy]*|"" ) echo -e "$ROOT_PW\n$ROOT_PW\n$ROOT_PW" | sudo passwd root; break;;
             [Nn]* ) ;;
-            * ) echo "Please answer yes or no.";;
+            * ) printf "Please answer yes or no. \n";;
         esac        
 done
 
