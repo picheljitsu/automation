@@ -45,9 +45,9 @@ sleep 5s
 sudo killall -u `whoami`
 
 #Set root creds
-if [ $1 ]; then
-  passwd root $1
-fi 
+#if [ $1 ]; then
+#  passwd root $1
+#fi 
 
 
 echo "[*] Starting package install"
