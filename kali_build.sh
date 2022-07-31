@@ -11,7 +11,7 @@ echo "tty set to $THIS_TTY" >> $LOG_FILE
 
 printf "[+] Logging to $LOG_FILE"
 echo "[*] Updating and upgrading..."
-sudo apt-get update -y >> $LOG_FILE 2>&1 && sudo apt-get upgrade >> $LOG_FILE 2>&1
+sudo apt-get update -y >> $LOG_FILE 2>&1 && sudo apt-get upgrade -y >> $LOG_FILE 2>&1
 echo "[+] Done w/ update and upgrade"
 
 echo "[*] Enabling root login..."
