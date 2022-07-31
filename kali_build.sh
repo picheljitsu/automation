@@ -12,6 +12,7 @@ while true; do
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
       esac
+    fi
 done
 LAST_CWD=`pwd`
 LOG_FILE=/tmp/kali_setup_install.log
