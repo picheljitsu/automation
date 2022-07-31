@@ -30,7 +30,7 @@ while true; do
         ROOT_PW=$INPUT_PW
     fi   
     echo "[+] Accept new password '$ROOT_PW'? (Y/n) " 
-    read CONFIRM_PW
+    read -p CONFIRM_PW
         case $CONFIRM_PW in
             [Yy]*|"" ) echo -e "$ROOT_PW\n$ROOT_PW\n$ROOT_PW" | sudo passwd root; break;;
             [Nn]* ) ;;
