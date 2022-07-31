@@ -39,6 +39,8 @@ done
 
 #fork task to login to desktop once user session killed?
 #logout of the session
+echo "[*] Logging out of session. Log in as root"
+sleep 5s
 sudo killall -u `whoami`
 
 #Set root creds
