@@ -24,7 +24,7 @@ ROOT_PW='changeme'
 while true; do
     CONFIRM_PW=''
     echo "[+] Enter new root password or hit enter to accept default password and continue (default: $ROOT_PW) " 
-    read INPUT_PW
+    read -p INPUT_PW
     if [[ ! -z $INPUT_PW ]]
     then            
         ROOT_PW=$INPUT_PW
