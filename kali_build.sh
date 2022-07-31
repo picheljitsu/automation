@@ -19,6 +19,8 @@ echo "[*] Enabling root login..."
 sudo apt install -y kali-root-login >> install.log 2>&1
 echo "[+] root login enabled"
 #fork task to login to desktop once user session killed?
+echo "[*] Prompt for root pw"
+sudo passwd root
 
 #logout of the session
 sudo killall -u `whoami`
