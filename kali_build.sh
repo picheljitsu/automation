@@ -1,5 +1,6 @@
 #!/bin/bash
 #add pw spraying https://github.com/byt3bl33d3r/SprayingToolkit.git
+#add check for network/internet connectivity
 
 LAST_CWD=`pwd`
 LOG_FILE=/tmp/kali_setup_install.log
