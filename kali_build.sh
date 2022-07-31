@@ -1,7 +1,18 @@
 #!/bin/bash
 #add pw spraying https://github.com/byt3bl33d3r/SprayingToolkit.git
 #add check for network/internet connectivity
-
+DEFAUL_PW='changepassword'
+while true; do
+    CONFIRM_PW=''
+    read -p "[+] Enter new root password or hit enter to accept default password and continue (default: $ROOT_PW) " INPUT_PW
+    if [ ! -z $INPUT_PW ]
+      read -p "[+] Accept new password $INPUT_PW? (Y/n)" CONFIRM_PW      
+      case $CONFIRM_PW in
+        [Yy]*|"" ) echo -e "$INPUT_PW\n$INPUT_PW\n$INPUT_PW" | sudo passwd root; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+      esac
+done
 LAST_CWD=`pwd`
 LOG_FILE=/tmp/kali_setup_install.log
 APT_PACKAGES=(jd-gui snapd python3-pip)
@@ -19,7 +30,7 @@ echo "[*] Enabling root login..."
 sudo apt install -y kali-root-login >> install.log 2>&1
 echo "[+] root login enabled"
 #fork task to login to desktop once user session killed?
-echo "[*] Prompt for root pw"
+echo "[*] E"
 sudo passwd root
 
 #logout of the session
