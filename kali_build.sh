@@ -28,8 +28,9 @@ while true; do
     if [[ ! -z $INPUT_PW ]]
     then            
         ROOT_PW=$INPUT_PW
-    fi        
-    read -p "[+] Accept new password '$ROOT_PW'? (Y/n) " CONFIRM_PW
+    fi   
+    echo "[+] Accept new password '$ROOT_PW'? (Y/n) " 
+    read CONFIRM_PW
         case $CONFIRM_PW in
             [Yy]*|"" ) echo -e "$ROOT_PW\n$ROOT_PW\n$ROOT_PW" | sudo passwd root; break;;
             [Nn]* ) ;;
