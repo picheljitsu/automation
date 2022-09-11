@@ -19,6 +19,7 @@ sudo chmod 400 /etc/squid/certs/*.pem
 ```
 #... other configs you need in here
 #start ssl-bump configs
+#0.0.0.0 is needed for IPv4
 https_port 0.0.0.0:3128 intercept ssl-bump \
 	cert=/etc/squid/certs/squid-ca-cert-key.pem \
 	generate-host-certificates=on \
