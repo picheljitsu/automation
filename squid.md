@@ -1,4 +1,4 @@
-# CentOS 8(?) squid proxy configurations (not fun)
+# CentOS 8(?) Squid Proxy Build
 
 ### Creating and prepping cert/key
 ```
