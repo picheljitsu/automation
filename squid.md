@@ -1,4 +1,3 @@
-#https://medium.com/@steensply/installing-and-configuring-squid-proxy-for-ssl-bumping-or-peek-n-splice-34afd3f69522
 
 ```
 #create cert and key
@@ -45,3 +44,6 @@ sudo /usr/lib64/squid/ssl_crtd -c -s /var/spool/squid/ssl_db
 ```
 sudo systemctl start squid
 ```
+
+Good reference:
+#https://medium.com/@steensply/installing-and-configuring-squid-proxy-for-ssl-bumping-or-peek-n-splice-34afd3f69522
