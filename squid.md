@@ -34,8 +34,7 @@ sslcrtd_program /usr/lib64/squid/ssl_crtd -s /var/spool/squid/ssl_db -M 4MB
 sslcrtd_children 5
 ```
 
-## Once the squid-cert-key.pem cert is in the right directory AND squid.conf is correctly pointing
-## to squid-ca-cert-key.pem, generate the db
+## Once the squid-cert-key.pem cert is in the right directory AND squid.conf is correctly pointing to squid-ca-cert-key.pem, generate the db
 
 ```
 sudo /usr/lib64/squid/ssl_crtd -c -s /var/spool/squid/ssl_db
